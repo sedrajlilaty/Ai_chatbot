@@ -1,0 +1,32 @@
+{
+  "name": "ai-chatbot",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run build:web && wrangler dev",
+"dev:web": "vite web --config web/vite.config.ts",    "build": "npm run build:web",
+"build:web": "vite build web --config web/vite.config.ts",    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p web/tsconfig.json",
+    "db:migrate:local": "wrangler d1 migrations apply chatbot --local",
+    "db:migrate:remote": "wrangler d1 migrations apply chatbot --remote",
+    "cf:types": "wrangler types"
+  },
+  "dependencies": {
+    "hono": "^4.7.10",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.0",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261001.1",
+    "@tailwindcss/vite": "^4.1.5",
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
+    "@vitejs/plugin-react": "^4.5.0",
+    "tailwindcss": "^4.1.5",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "wrangler": "^4.16.1"
+  }
+}
